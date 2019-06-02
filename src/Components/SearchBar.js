@@ -17,6 +17,9 @@ export default class SearchBar extends React.Component {
 
     toggleSearch = () => {
         const { searchState } = this.state
+        const { toggleModalVisibility } = this.props
+        const searchTerm = this.refs.searchInput.value
+        searchTerm &&  toggleModalVisibility(true)
         searchState === SearchOptions.SearchClose ? this.openSearch() : this.closeSearch()
     }
 
@@ -35,7 +38,7 @@ export default class SearchBar extends React.Component {
         this.setFocus()
         return (
             <div className={searchState}>
-                <input ref="searchInput" type="search" className="search-box"/>
+                <input ref="searchInput" type="search" className="search-box" onSubmit={e=>console.log(e)}/>
                 <span className="search-button" onClick={this.toggleSearch}>
                     <span className="search-icon"></span>
                 </span>
