@@ -1,9 +1,10 @@
 import React from 'react'
+import Logo from '../assets/logo_transparent.png'
 
 export default class LogoBox extends React.Component {
     render() {
         return <div className="logoBox">
-            <img src="../assets/logo_transparent.png" alt="Logo" class="logo"/>
+            <img src={Logo} alt="Logo" class="logo"/>
         </div>
     }
 }
