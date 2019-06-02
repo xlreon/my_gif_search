@@ -28,3 +28,11 @@
     letter-spacing: 17.4px;
     animation: moveInRight 1s ease-out;
 }
+
+.you {
+    background: orange;
+}
+
+.gif {
+    background: rgb(161, 6, 136);
+}

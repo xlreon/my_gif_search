@@ -11,7 +11,7 @@ export default class Header extends React.Component {
                         My gif search
                     </span>
                     <span class="heading-primary-sub">
-                        Describe you with a Gif
+                        Describe <span className="you">you</span> with a <span className="gif">Gif</span>
                     </span>
                 </h1>
             </div>
