@@ -2,7 +2,8 @@ import { createStore } from 'redux'
 import reducers from '../reducers'
 
 const initialState = {
-    searchText: ""
+    searchText: "",
+    modalVisibility: false
 }
 
 let store = createStore(reducers)

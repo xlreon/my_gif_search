@@ -1,33 +1,30 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import './HomePage.css'
 import { Header, LogoBox, SearchResultModal } from '../Components'
 
-export default class HomePage extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            modalVisibility: false
-        }
-    }
-
-    toggleModalVisibility = modalVisibility => this.setState({modalVisibility})
+class HomePage extends React.Component {
 
     render() {
-        const { modalVisibility } = this.state
+        const { modalVisibility } = this.props
         return (
             <div className='container'>
                 <div className='header'>
                     <LogoBox/>
-                    <Header
-                        toggleModalVisibility={this.toggleModalVisibility}
-                    />
+                    <Header/>
                 </div>
                 <SearchResultModal 
                     visibility={modalVisibility}
-                    toggleModalVisibility={this.toggleModalVisibility}
                 />
             </div>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        modalVisibility: state.modalVisibility
+    }
+}
+
+export default connect(mapStateToProps)(HomePage)
