@@ -40,7 +40,9 @@ class SearchBar extends React.Component {
         autoFocus && this.refs.searchInput.focus()
     }
 
-    handleChange = (event) => this.setState({searchTerm: event.target.value})
+    handleChange = event => this.setState({searchTerm: event.target.value})
+
+    handleKeyboard = event => event.key === 'Enter' && this.toggleSearch()
 
     render() {
         const { searchState, searchTerm } = this.state
@@ -53,6 +55,7 @@ class SearchBar extends React.Component {
                     className="search-box"
                     value={searchTerm}
                     onChange={this.handleChange}
+                    onKeyUp={this.handleKeyboard}
                 />
                 <span className="search-button" onClick={this.toggleSearch}>
                     <span className="search-icon"></span>
