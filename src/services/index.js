@@ -12,7 +12,7 @@ const GiphyEndPoint = createClient('https://api.giphy.com')
 
 const getGifs = (searchTerm) => 
     GiphyEndPoint
-    .get(`/v1/gifs/search?api_key=${ApiKey}&&q=${searchTerm}&&limit=14`)
+    .get(`/v1/gifs/search?api_key=${ApiKey}&&q=${searchTerm}&&limit=500`)
     .then(response => response.data.data)
 
 export {

@@ -13,10 +13,10 @@ class HomePage extends React.Component {
                     <LogoBox/>
                     <Header/>
                 </div>
-                <SearchResultModal 
-                    visibility={modalVisibility}
-                    gifsData={gifs}
-                />
+                    <SearchResultModal 
+                        visibility={modalVisibility}
+                        gifsData={gifs}
+                    />
             </div>
         );
     }
