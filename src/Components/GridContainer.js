@@ -48,7 +48,6 @@ class GridContainer extends React.Component {
 
     getItems = () => {
         const currentContent = this.getCurrentContent()
-        const skeletonArray = [0,1,2,3,4,5,6,7,8,9]
         const { playIndex } = this.state
         return currentContent
                 ? currentContent.map(
@@ -59,6 +58,7 @@ class GridContainer extends React.Component {
                         if(gifUrl && gifTitle) {
                             return <div className={`gallery__item gallery__item--${index+1}`}>
                                     <img
+                                        key={gif.id}
                                         src={playIndex === index ? gifUrl : gifStaticUrl}
                                         alt={gif.title}
                                         className="gallery__img"
@@ -69,11 +69,7 @@ class GridContainer extends React.Component {
                         }
                     }
                 )
-                : skeletonArray.map( (data, index) => {
-                    return <div className={`gallery__item gallery__item--${index+1}`}>
-                            <div className="skeleton"></div>
-                        </div>
-                } )
+                : []
     }
 
     render() {

@@ -54,6 +54,7 @@
     object-fit: cover;
     display: block; 
     border: 0;
+    background: url('https://media1.giphy.com/media/3o6UBbYR3t0coIdKRq/source.gif')
 }
 
 .gallery__img:hover {
