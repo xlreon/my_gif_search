@@ -1,10 +1,14 @@
 import React from 'react'
-import Logo from '../assets/logo_transparent.png'
+import './LogoBox.css'
 
 export default class LogoBox extends React.Component {
     render() {
-        return <div className="logoBox">
-            <img src={Logo} alt="Logo" class="logo"/>
+        return <div className="logo-box">
+            <img
+                className="logo"
+                src='https://i.ya-webdesign.com/images/neon-transparent-animated-3.gif'
+                alt="Logo"
+                />
         </div>
     }
 }
