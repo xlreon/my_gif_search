@@ -1,12 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import './SearchBar.scss';
+import { updateSearchText } from "../actions";
 
 const SearchOptions = {
     SearchClose: 'search',
     SearchOpen: 'search open'
 }
 
-export default class SearchBar extends React.Component {
+class SearchBar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -18,8 +20,9 @@ export default class SearchBar extends React.Component {
 
     toggleSearch = () => {
         const { searchState, searchTerm } = this.state
-        const { toggleModalVisibility } = this.props
+        const { toggleModalVisibility, updateSearchText } = this.props
         if(searchTerm) {
+            updateSearchText(searchTerm)
             toggleModalVisibility(true)
             this.setState({searchTerm: ""})
         }
@@ -57,3 +60,5 @@ export default class SearchBar extends React.Component {
         );
     }
 }
+
+export default connect(null,{updateSearchText})(SearchBar)
