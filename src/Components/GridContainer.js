@@ -6,7 +6,8 @@ class GridContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            batchNo: 1
+            batchNo: 1,
+            playIndex: null,
         }
     }
 
@@ -43,20 +44,26 @@ class GridContainer extends React.Component {
         }
     }
 
+    togglePlayPause = playIndex => this.setState({playIndex}) 
+
     getItems = () => {
         const currentContent = this.getCurrentContent()
         const skeletonArray = [0,1,2,3,4,5,6,7,8,9]
+        const { playIndex } = this.state
         return currentContent
                 ? currentContent.map(
                     (gif, index) => {
                         const gifUrl = gif.images.preview_webp && gif.images.preview_webp.url
+                        const gifStaticUrl = gif.images.original_still && gif.images.original_still.url
                         const gifTitle = gif.title
                         if(gifUrl && gifTitle) {
                             return <div className={`gallery__item gallery__item--${index+1}`}>
                                     <img
-                                        src={gif.images.preview_webp.url}
+                                        src={playIndex === index ? gifUrl : gifStaticUrl}
                                         alt={gif.title}
                                         className="gallery__img"
+                                        onMouseEnter={() => this.togglePlayPause(index)}
+                                        onMouseLeave={() => this.togglePlayPause(null)}
                                         />
                                 </div>
                         }
