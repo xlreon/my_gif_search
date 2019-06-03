@@ -1,25 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import './SearchBar.scss';
+import { updateSearchText, setModalVisibility, getSearchGifs } from "../actions";
 
 const SearchOptions = {
     SearchClose: 'search',
     SearchOpen: 'search open'
 }
 
-export default class SearchBar extends React.Component {
+class SearchBar extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            searchState: SearchOptions.SearchClose
+            searchState: SearchOptions.SearchClose,
+            searchTerm: ""
         }
     }
 
     toggleSearch = () => {
-        const { searchState } = this.state
-        const { toggleModalVisibility } = this.props
-        const searchTerm = this.refs.searchInput.value
-        searchTerm &&  toggleModalVisibility(true)
+        const { searchState, searchTerm } = this.state
+        const { updateSearchText, setModalVisibility, getSearchGifs } = this.props
+        if(searchTerm) {
+            updateSearchText(searchTerm)
+            setModalVisibility(true)
+            getSearchGifs(searchTerm)
+            this.setState({searchTerm: ""})
+        }
         searchState === SearchOptions.SearchClose ? this.openSearch() : this.closeSearch()
     }
 
@@ -33,12 +40,20 @@ export default class SearchBar extends React.Component {
         autoFocus && this.refs.searchInput.focus()
     }
 
+    handleChange = (event) => this.setState({searchTerm: event.target.value})
+
     render() {
-        const { searchState } = this.state
+        const { searchState, searchTerm } = this.state
         this.setFocus()
         return (
             <div className={searchState}>
-                <input ref="searchInput" type="search" className="search-box" onSubmit={e=>console.log(e)}/>
+                <input
+                    ref="searchInput"
+                    type="search"
+                    className="search-box"
+                    value={searchTerm}
+                    onChange={this.handleChange}
+                />
                 <span className="search-button" onClick={this.toggleSearch}>
                     <span className="search-icon"></span>
                 </span>
@@ -46,3 +61,9 @@ export default class SearchBar extends React.Component {
         );
     }
 }
+
+export default connect(null,{
+    updateSearchText,
+    setModalVisibility,
+    getSearchGifs
+})(SearchBar)
