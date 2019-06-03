@@ -2,10 +2,8 @@
     background-color: inherit;
     grid-column: full-start / full-end;
     display: grid;
-    /*grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(7, 5vw);*/
-    grid-template: repeat(7, 5vw)/repeat(8, 1fr);
-    grid-gap: 0.5rem;
+    grid-template: repeat(7, 5vw)/repeat(10, 1fr);
+    grid-gap: 0.6rem;
 }
 
 .gallery__item--1 {
@@ -53,7 +51,7 @@
 .gallery__img {
     width: 100%;
     height: 100%;
-    /* object-fit: cover;
-    display: block;  */
+    object-fit: cover;
+    display: block; 
     border: 0;
 }
