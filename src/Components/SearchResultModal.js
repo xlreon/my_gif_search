@@ -1,27 +1,40 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setModalVisibility } from '../actions'
-import { Modal } from 'antd';
+import { Modal } from 'antd'
+import GridContainer from './GridContainer'
 
 class SearchResultModal extends React.Component {
 
     render() {
-        // TODO - gif Data to be used after card layout is build
-        const { visibility, setModalVisibility, gifsData } = this.props
+        const { visibility, setModalVisibility, gifsData, searchText } = this.props
 
         return(
             <Modal
-                title={"Gif Results"}
+                title={`Your Gif Results for ${searchText}`}
                 visible={visibility}
                 width={"90%"}
                 height={"90%"}
                 onCancel={() => setModalVisibility(false)}
                 footer={null}
-            />
+                centered
+            >
+                <GridContainer
+                    gifsData={gifsData}
+                />
+            </Modal>
         );
     }
 }
 
-export default connect(null,{
-    setModalVisibility
-})(SearchResultModal)
+const mapStateToProps = (state) => {
+    return {
+        searchText: state.searchText
+    }
+}
+
+export default connect(
+        mapStateToProps,
+        {setModalVisibility}
+    )
+(SearchResultModal)
