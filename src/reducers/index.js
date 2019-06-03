@@ -10,6 +10,8 @@ function reducer(state=initialState,action) {
             return {...state, searchText: payload}
         case AppActions.SET_MODAL_VISIBILITY:
             return { ...state, modalVisibility: payload }
+        case AppActions.FETCH_GIFS_SUCCESS:
+            return { ...state, gifs: payload}
         default:
             return state
     }
