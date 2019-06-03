@@ -44,11 +44,14 @@ class SearchBar extends React.Component {
 
     handleKeyboard = event => event.key === 'Enter' && this.toggleSearch()
 
+    componentDidUpdate() {
+        this.setFocus()
+    }
+
     render() {
         const { searchState, searchTerm } = this.state
-        this.setFocus()
         return (
-            <div className={searchState}>
+            <div key={searchState} className={searchState}>
                 <input
                     ref="searchInput"
                     type="search"
