@@ -17,6 +17,8 @@ export default class SearchResultModal extends React.Component {
             <Modal
                 title={"Gif Results"}
                 visible={visibility}
+                width={"90%"}
+                height={"90%"}
                 onCancel={() => toggleModalVisibility(false)}
             />
         );

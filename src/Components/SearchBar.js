@@ -11,15 +11,18 @@ export default class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchState: SearchOptions.SearchClose
+            searchState: SearchOptions.SearchClose,
+            searchTerm: ""
         }
     }
 
     toggleSearch = () => {
-        const { searchState } = this.state
+        const { searchState, searchTerm } = this.state
         const { toggleModalVisibility } = this.props
-        const searchTerm = this.refs.searchInput.value
-        searchTerm &&  toggleModalVisibility(true)
+        if(searchTerm) {
+            toggleModalVisibility(true)
+            this.setState({searchTerm: ""})
+        }
         searchState === SearchOptions.SearchClose ? this.openSearch() : this.closeSearch()
     }
 
@@ -33,12 +36,20 @@ export default class SearchBar extends React.Component {
         autoFocus && this.refs.searchInput.focus()
     }
 
+    handleChange = (event) => this.setState({searchTerm: event.target.value})
+
     render() {
-        const { searchState } = this.state
+        const { searchState, searchTerm } = this.state
         this.setFocus()
         return (
             <div className={searchState}>
-                <input ref="searchInput" type="search" className="search-box" onSubmit={e=>console.log(e)}/>
+                <input
+                    ref="searchInput"
+                    type="search"
+                    className="search-box"
+                    value={searchTerm}
+                    onChange={this.handleChange}
+                />
                 <span className="search-button" onClick={this.toggleSearch}>
                     <span className="search-icon"></span>
                 </span>
