@@ -14,10 +14,10 @@ class GridContainer extends React.Component {
     handleScroll = (event) => {
         const { batchNo } = this.state
         const { gifsData } = this.props
-        if(event.deltaY === 1) {
+        if(event.deltaY >= 3) {
             batchNo !== gifsData.length && this.setState({batchNo: batchNo + 1})
         }
-        else if(event.deltaY === -1) {
+        else if(event.deltaY <= -3) {
             batchNo !== 1 && this.setState({batchNo: batchNo - 1})
         }
     }
