@@ -6,7 +6,9 @@ import { Modal } from 'antd';
 class SearchResultModal extends React.Component {
 
     render() {
-        const { visibility, setModalVisibility } = this.props
+        // TODO - gif Data to be used after card layout is build
+        const { visibility, setModalVisibility, gifsData } = this.props
+
         return(
             <Modal
                 title={"Gif Results"}

@@ -6,7 +6,7 @@ import { Header, LogoBox, SearchResultModal } from '../Components'
 class HomePage extends React.Component {
 
     render() {
-        const { modalVisibility } = this.props
+        const { modalVisibility, gifs } = this.props
         return (
             <div className='container'>
                 <div className='header'>
@@ -15,6 +15,7 @@ class HomePage extends React.Component {
                 </div>
                 <SearchResultModal 
                     visibility={modalVisibility}
+                    gifsData={gifs}
                 />
             </div>
         );
@@ -23,7 +24,8 @@ class HomePage extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        modalVisibility: state.modalVisibility
+        modalVisibility: state.modalVisibility,
+        gifs: state.gifs
     }
 }
 
