@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setModalVisibility } from '../actions'
-import { Modal } from 'antd'
+import { Modal, Typography } from 'antd'
 import GridContainer from './GridContainer'
+
+const { Text } = Typography
 
 class SearchResultModal extends React.Component {
 
@@ -11,7 +13,7 @@ class SearchResultModal extends React.Component {
 
         return(
             <Modal
-                title={`Your Gif Results for ${searchText}`}
+                title={<span>{'Your Gif Results for '}<Text mark>{searchText}</Text></span>}
                 visible={visibility}
                 width={"90%"}
                 height={"90%"}
