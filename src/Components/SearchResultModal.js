@@ -20,6 +20,7 @@ export default class SearchResultModal extends React.Component {
                 width={"90%"}
                 height={"90%"}
                 onCancel={() => toggleModalVisibility(false)}
+                footer={null}
             />
         );
     }
